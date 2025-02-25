@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Διαχείριση Συναλλαγών</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Διαχείριση Συναλλαγών</h1>
+        <button id="loadFileBtn" onclick="document.getElementById('csvFileInput').click();">Φόρτωση Αρχείου CSV</button>
+        <input type="file" id="csvFileInput" accept=".csv" style="display:none;" onchange="handleFile(event)">
+        <button id="downloadBtn" onclick="downloadCSV()" style="display:none;">Κατέβασμα CSV</button>
+        <button onclick="showAddForm()">Προσθήκη Νέας Εγγραφής</button>
+
+        <!-- Φόρμα για την προσθήκη ή επεξεργασία εγγραφής -->
+        <div id="addForm" style="display:none;">
+            <h2>Προσθήκη ή Επεξεργασία Εγγραφής</h2>
+            <form id="form">
+                <label>Αριθμός Τιμολογίου:</label><input type="text" id="invoice_no" required><br>
+                <label>Αναγνωριστικό Πελάτη:</label><input type="text" id="customer_id" required><br>
+                <label>Φύλο:</label><input type="text" id="gender" required><br>
+                <label>Ηλικία:</label><input type="number" id="age" required><br>
+                <label>Κατηγορία:</label><input type="text" id="category" required><br>
+                <label>Ποσότητα:</label><input type="number" id="quantity" required><br>
+                <label>Τιμή:</label><input type="text" id="price" required><br>
+                <label>Τρόπος Πληρωμής:</label><input type="text" id="payment_method" required><br>
+                <label>Ημερομηνία Συναλλαγής:</label><input type="date" id="invoice_date" required><br>
+                <label>Πολυκατάστημα:</label><input type="text" id="shopping_mall" required><br>
+                <button type="submit">Υποβολή</button>
+                <button type="button" onclick="closeAddForm()">Ακύρωση</button>
+            </form>
+        </div>
+
+        <div id="transactionsTableContainer">
+            <table id="transactionsTable">
+                <thead>
+                    <tr>
+                        <th>Αριθμός Τιμολογίου</th>
+                        <th>Αναγνωριστικό Πελάτη</th>
+                        <th>Φύλο</th>
+                        <th>Ηλικία</th>
+                        <th>Κατηγορία</th>
+                        <th>Ποσότητα</th>
+                        <th>Τιμή</th>
+                        <th>Τρόπος Πληρωμής</th>
+                        <th>Ημερομηνία Συναλλαγής</th>
+                        <th>Πολυκατάστημα</th>
+                        <th>Ενέργειες</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Τα Δεδομένα θα φορτωθούν εδώ -->
+                </tbody>
+            </table>
+            <div id="pagination"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
